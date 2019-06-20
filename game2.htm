@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        counter-reset: sum;
+      }
+
+      #a:checked {
+        counter-increment: sum 2;
+      }
+      #b:checked {
+        counter-increment: sum 5;
+      }
+      #c:checked {
+        counter-increment: sum 14;
+      }
+      #d:checked {
+        counter-increment: sum -4;
+      }
+      #e:checked {
+        counter-increment: sum 7;
+      }
+      #f:checked {
+        counter-increment: sum -1;
+      }
+
+      .sum::before {
+        content: "= " counter(sum);
+      }
+
+      body {
+        font-family: "Amatic SC", cursive;
+      }
+      .box {
+        background-color: aquamarine;
+        width: 40%;
+        padding-bottom: 20px;
+        padding-top: 20px;
+      }
+
+      h2 {
+        margin: 0 0 32px;
+        font-size: 30px;
+        text-align: center;
+      }
+
+      input {
+        position: absolute;
+        left: -9999px;
+      }
+
+      label {
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid gray;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 10px;
+        background-color: white;
+      }
+
+      label::before {
+        display: inline;
+      }
+
+      input:checked + label {
+        border: solid 2px #fff;
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 10px #fff;
+      }
+
+      span {
+        float: right;
+        margin: 8px;
+        padding: 18px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-size: 20px;
+        font-weight: bolder;
+      }
+
+      #a:not(:checked)
+        ~ #b:not(:checked)
+        ~ #c:checked
+        ~ #d:checked
+        ~ #e:not(:checked)
+        ~ #f:checked
+        ~ .sum::after {
+        content: " (congo!)";
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h2>Pick the numbers that add up to 9:</h2>
+      <input id="a" type="checkbox" /><label for="a">2</label>
+      <input id="b" type="checkbox" /><label for="b">4</label>
+      <input id="c" type="checkbox" /><label for="c">14</label>
+      <input id="d" type="checkbox" /><label for="d">-4</label>
+      <input id="e" type="checkbox" /><label for="e">7</label>
+      <input id="f" type="checkbox" /><label for="f">-1</label>
+      <span class="sum"></span>
+    </div>
+  </body>
+</html>
